@@ -6,7 +6,8 @@ Navigate to → [API Publisher](https://localhost:9443/devportal).
 ## Step 2: Authentication
 - **Username:** devuser
 - **Password:** user123
-- Log in with your credentials.
+
+Log in with your credentials.
 
 ## Step 3: Use API Marketplace Assistant
 1. Click the chat icon → Open **API Marketplace Assistant**.
@@ -23,7 +24,7 @@ Navigate to → [API Publisher](https://localhost:9443/devportal).
    - **Application Name:** [name]
    - **Shared Quota for Application Tokens:** [quota]
    - **Application Description:** [description]
-   - Click **Save**.
+   Click **Save**.
 
 ## Step 6: Subscribe to the API
 1. Navigate to **Subscriptions** → Click **SUBSCRIBE APIS**.
