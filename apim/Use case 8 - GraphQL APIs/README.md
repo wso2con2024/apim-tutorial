@@ -5,7 +5,7 @@
      `https://github.com/wso2/samples-apim/blob/demo_2024/apim-tutorial/backends/graphql-backend/data/schema_graphql.graphql`
 
 2. **Access the Publisher Portal**
-   - Log into the Publisher Portal.
+Navigate to → [API Publisher](https://localhost:9443/publisher).
 
 3. **Create API**
    - Click `Create API`.
@@ -33,7 +33,7 @@
 8. **API Testing**
    - Select `Try Out` in the `API CONSOLE`.
    - Paste the Access Token.
-   - In the GraphiQL console, enter the following subscription query:
+   - In the GraphiQL console, execute the following subscription query:
      ```graphql
      subscription {
        scheduleUpdate(from: "London") {
@@ -56,7 +56,7 @@
 11. **Execute Mutation**
     - Go to the `Try Out` console.
     - Paste the access token.
-    - In the GraphiQL console, enter the following mutation query:
+    - In the GraphiQL console, execute the following mutation query:
       ```graphql
       mutation {
         updateSchedule(endTime: "10:25", scheduleId: "1000", startTime: "08:20") {
@@ -71,4 +71,4 @@
       ```
 
 12. **Observe Subscription Updates**
-    - Notice the mutated schedule is updated in the subscription tab of the first console.
+    - Notice the mutated schedule is updated in the subscription tab of the first tab.
