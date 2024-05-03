@@ -28,3 +28,4 @@ In today's digital world, managing APIs is crucial for organizations aiming to s
 - JDK 17
 - [Apache Tomcat 10.x](https://tomcat.apache.org/download-10.cgi)
 - [Postman](https://www.postman.com/downloads/)
+- [wscat](https://www.npmjs.com/package/wscat/v/5.0.0)
