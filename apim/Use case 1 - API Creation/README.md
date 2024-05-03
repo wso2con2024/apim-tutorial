@@ -1,4 +1,4 @@
-# Using the API Publisher and Interacting with APIs
+# Use case 1 - API Creation
 
 ## Step 1: Access the API Publisher
 Navigate to → [API Publisher](https://localhost:9443/devportal).

@@ -1,4 +1,4 @@
-# Configuring and Using API Scopes
+# Use case 3 - API Security
 
 ## Step 1: Access the API Publisher
 Navigate to → [API Publisher](https://localhost:9443/publisher).
