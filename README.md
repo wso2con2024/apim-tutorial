@@ -10,22 +10,21 @@ In today's digital world, managing APIs is crucial for organizations aiming to s
 - Explore best practices for API design API security and developer experience.
 - Gain practical insights into leveraging Kubernetes-native API Management (APIM) for scalability and flexibility.
 
-## Tutorial Structure
+# APK Tutorial
 
-1. **Introduction to API Management:** Understand the role of API management in modern digital ecosystems.
-2. **API Lifecycle Management:** Learn how to manage APIs from design to retirement, including best practices and optimization strategies.
-3. **Efficient API Design:** Explore RESTful principles, versioning, and auditing tools for creating scalable and flexible APIs.
-4. **Rate Limiting:** Ensure fair usage and optimize API performance
-5. **Effective API Consumption:** Enhance developer experience with comprehensive documentation, SDKs, and security measures.
-6. **API Security:** Implement best practices for preventing unauthorized access and data breaches.
-7. **Kubernetes-Native API Management (APIM):** Discover the benefits of using Kubernetes-native API Management (APIM) for scalability and adaptability in microservices architectures.
-8. **Real-time Analytics and Monitoring:** Gain insights into API usage patterns, latency, error rates, and overall health for performance optimization.
+## Overview
 
+Introducing APK, the API Platform for Kubernetes, a cutting-edge API management solution designed to leverage the power of Kubernetes for seamless and scalable deployments. APK harnesses Kubernetes' native features, enabling automatic scaling based on load and configurable parameters, utilizing rich Kubernetes metrics.
 
-## Prerequisites
+At the core of APK's robust gateway solution is the meticulously selected Envoy technology, known for exceptional performance, lightweight nature, and perfect compatibility within the APK ecosystem. APK extends beyond traditional gateways with purpose-built extensions addressing specific API management use cases. Some of these extensions have been contributed back to the Envoy community, reflecting our commitment to collaborative innovation.
 
-- [WSO2 API Manage v4.3.0](https://wso2.com/api-manager/)
-- JDK 17 or higher
-- [Apache Tomcat 10.x](https://tomcat.apache.org/download-10.cgi)
-- [Postman](https://www.postman.com/downloads/)
-- [wscat](https://www.npmjs.com/package/wscat/v/5.0.0)
+WSO2 APK adheres to the Kubernetes Gateway API specification, an open-source project managed by the SIG-NETWORK community. This specification introduces vital resources such as GatewayClass, Gateway, HTTPRoute, TCPRoute, and Service, augmenting service networking capabilities in Kubernetes. By adhering to this specification, WSO2 APK seamlessly integrates with Kubernetes service networking, leveraging expressive and extensible interfaces to enhance API management functionality within Kubernetes deployments.
+
+## Characteristics of APK
+
+APK's microservices architecture offers advantages such as easy scalability and seamless upgrades, harnessing the benefits of the architecture for agility and flexibility.
+The separation of the control plane and data plane in APK allows users to integrate any control plane of their choice, providing maximum flexibility and customization.
+APK is an evolving open-source solution that delivers advanced API management capabilities and is designed for cloud-native architectures, seamlessly integrating with Kubernetes.
+With seamless CI/CD integration, APK supports a streamlined GitOps approach for efficient deployment and management of APIs.
+APK aims to provide API marketplace capabilities, enabling sharing, discovery, and reusability of APIs while focusing on efficient governance and administration.
+With its Kubernetes-native approach, exceptional characteristics, microservices architecture, and commitment to collaboration and innovation, APK sets a new standard for API management.

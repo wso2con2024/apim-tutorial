@@ -1,31 +1,126 @@
-# API Management Tutorial
+# Prerequisites
 
-## Overview
+1. [Setup a Kubernetes Cluster](https://kubernetes.io/docs/setup).
+2. [Install the Kubernetes Client (kubectl)](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+3. [Install Helm](https://helm.sh/docs/intro/install/).
 
-In today's digital world, managing APIs is crucial for organizations aiming to succeed in a connected environment. This tutorial explores how to use API Management (APIM) to drive innovation, collaboration, and seamless experiences. By following the tutorial, participants learn practical ways to use APIM Manager to manage APIs throughout their lifecycle, effective design, ensure security and compliance, improve performance, and create a better experience for developers. 
-## Features
+To successfully deploy WSO2 APK in your environment, it's essential to meet certain minimum requirements. These requirements ensure that the deployment process is smooth, and the platform operates efficiently.
 
-- Understand the importance of API management in digital transformation.
-- Learn how to design, deploy, and manage APIs throughout their lifecycle.
-- Explore best practices for API design API security and developer experience.
-- Gain practical insights into leveraging Kubernetes-native API Management (APIM) for scalability and flexibility.
+To check the minimun requirement according to your setup follow [Minimum Requirement](https://apk.docs.wso2.com/en/latest/setup/prerequisites/).
 
-## Tutorial Structure
+# Install APK With Control Plane
 
-1. **Introduction to API Management:** Understand the role of API management in modern digital ecosystems.
-2. **API Lifecycle Management:** Learn how to manage APIs from design to retirement, including best practices and optimization strategies.
-3. **Efficient API Design:** Explore RESTful principles, versioning, and auditing tools for creating scalable and flexible APIs.
-4. **Rate Limiting:** Ensure fair usage and optimize API performance
-5. **Effective API Consumption:** Enhance developer experience with comprehensive documentation, SDKs, and security measures.
-6. **API Security:** Implement best practices for preventing unauthorized access and data breaches.
-7. **Kubernetes-Native API Management (APIM):** Discover the benefits of using Kubernetes-native API Management (APIM) for scalability and adaptability in microservices architectures.
-8. **Real-time Analytics and Monitoring:** Gain insights into API usage patterns, latency, error rates, and overall health for performance optimization.
+Please follow guide to installing an APK with Control Plane [Setup](https://apk.docs.wso2.com/en/latest/setup/install-with-cp/)
+
+# API Development Flow
+
+[![Architecture](../assets/img/apk-overview.png)](../assets/img/apk-overview.png)
+
+## Step 1 - Create the Backend
+
+The endpoint "http://hotel-service.backend:82" provided in the above files points to a backend deployed on a kubernetes service. Prior to invoking the API, you will need to have this backend up. 
+
+We have provided the file containing this sample backend [here](/backend.yaml). Download it and create the backend service using the following command.
+
+```
+kubectl apply -f ./employee-service-backend.yaml -n backend
+```
+
+Wait for this pod to spin up. You can check its status using the following command.
+
+```
+kubectl get pods -n backend
+```
+
+## Step 2 - Generate APK configuration file from the OpenAPI definition
+
+Apart from the above API definition file, we also need an `apk-conf` file that defines the configurations and metadata for this API. We have a configuration service that can be used to generate this apk-conf file when the OpenAPI definition is provided. 
 
 
-## Prerequisites
+1. Execute the following request to generate the APK configuration. Use the values provided in the table below in the body of your request. 
 
-- [WSO2 API Manage v4.3.0](https://wso2.com/api-manager/)
-- JDK 17 or higher
-- [Apache Tomcat 10.x](https://tomcat.apache.org/download-10.cgi)
-- [Postman](https://www.postman.com/downloads/)
-- [wscat](https://www.npmjs.com/package/wscat/v/5.0.0)
+    | Field      | Value                                                                                                                     |
+    | ---------- | ------------------------------------------------------------------------------------------------------------------------- |
+    | definition | `EmployeeServiceDefinition.json` file that was downloaded at the beginning of [Step 2](#step-2-create-and-deploy-the-api) |
+
+    === "Sample Request"
+        ```
+        curl -k --location 'https://api.am.wso2.com:9095/api/configurator/1.1.0/apis/generate-configuration' \
+        --header 'Host: api.am.wso2.com' \
+        --form 'definition=@"/Users/user/EmployeeServiceDefinition.json"' > EmployeeService.apk-conf
+        ```
+
+    === "Sample Response"
+        ```
+        ---
+        name: "EmployeeServiceAPI"
+        basePath: "/RW1wbG95ZWVTZXJ2aWNlQVBJMy4xNA"
+        version: "3.14"
+        type: "REST"
+        defaultVersion: false
+        endpointConfigurations:
+            production:
+                endpoint: "http://employee-service:80"
+        operations:
+        - target: "/employee"
+            verb: "GET"
+            secured: true
+            scopes: []
+        - target: "/employee"
+            verb: "POST"
+            secured: true
+            scopes: []
+        - target: "/employee/{employeeId}"
+            verb: "PUT"
+            secured: true
+            scopes: []
+        - target: "/employee/{employeeId}"
+            verb: "DELETE"
+            secured: true
+            scopes: []
+        ```
+
+    === "Request Format"
+        ```
+        curl --location 'https://<host>:9095/api/configurator/1.1.0/apis/generate-configuration' \
+        --header 'Host: <host>' \
+        --form 'apiType="<api-type>"' \
+        --form 'definition=@"<path/to/EmployeeServiceDefinition.json>"'
+        ```
+
+2. You will get the apk-conf file content as the response. Save this content into a file named `EmployeeService.apk-conf`.
+
+## Step 3 - Generate K8s custom resources and Deploy
+
+```
+curl --location 'https://api.am.wso2.com:9095/api/configurator/1.0.0/apis/generate-k8s-resources' \
+--header 'Content-Type: multipart/form-data' \
+--header 'Accept: application/zip' \
+--form 'apkConfiguration=@"/Users/user/EmployeeService.apk-conf"' \
+--form 'definitionFile=@"/Users/user/EmployeeServiceDefinition.json"' \
+-k --output ./api-crds.zip
+```
+
+The sample output of the generated zip file looks as follows.
+
+```
+├── 7416c241a121b844392d447f00ff6709cb9c932b.yaml
+├── 7416c241a121b844392d447f00ff6709cb9c932b-definition.yaml.yaml
+├── 7416c241a121b844392d447f00ff6709cb9c932b-production-httproute-1.yaml
+└── backend-f3d6786c4f383ffbd7ec8620596811df652dba73-api.yaml
+```
+Once you have generated your K8s artifacts, the next step is to apply them to the Kubernetes API server. 
+
+```
+kubectl apply -f <path_to_extracted_zip_file> -n apk
+```
+
+4. Execute the command below. You will be able to see that the `EmployeeServiceAPI` is successfully deployed as shown in the image.
+
+
+    === "Command"
+        ```
+        kubectl get apis -n apk
+        ```
+
+    [![Deployed API](../assets/img/get-started/deployed-api.png)](../assets/img/get-started/deployed-api.png)
