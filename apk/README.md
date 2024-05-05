@@ -32,75 +32,80 @@ Wait for this pod to spin up. You can check its status using the following comma
 kubectl get pods -n backend
 ```
 
+## Step 2 - Access thorugh localhost
+
+1. To access the deployment through your local machine"
+
+    Port forward gateway service to localhost.
+        ```console
+        kubectl port-forward svc/apk-wso2-apk-gateway-service 9095:9095
+        ```
+
+2. Add a hostname mapping to the ```/etc/hosts``` file as follows.
+
+    | IP        | Domain name         |
+    | --------- | ------------------- |
+    | 127.0.0.1 | api.am.wso2.com default.gw.wso2.com idp.am.wso2.com carbon.super.gw.wso2.com  |
+
 ## Step 2 - Generate APK configuration file from the OpenAPI definition
+
+1. Save and download the sample [HotelReservationService.json](resources/HotelReservationService) file. This is the OAS definition of the API that we are going to deploy in APK.
 
 Apart from the above API definition file, we also need an `apk-conf` file that defines the configurations and metadata for this API. We have a configuration service that can be used to generate this apk-conf file when the OpenAPI definition is provided. 
 
 
-1. Execute the following request to generate the apk configuration. Use the values provided in the table below in the body of your request. 
+2. Execute the following request to generate the apk configuration.
 
-    |    Field     |                               Value                                                      |
-    |--------------|------------------------------------------------------------------------------------------|
-    | definition   | `EmployeeServiceDefinition.json` file that was downloaded at the beginning of [Step 2](#step-2-create-and-deploy-the-api)     |
-
-
-    === "Sample Request"
+    === "Request"
         ```
-        curl -k --location 'https://api.am.wso2.com:9095/api/configurator/1.1.0/apis/generate-configuration' \
-        --header 'Host: api.am.wso2.com' \
-        --form 'definition=@"/Users/user/EmployeeServiceDefinition.json"'
+        curl -k --location 'https://api.am.wso2.com:9095/api/configurator/1.1.0/apis/generate-configuration' --header 'Host: api.am.wso2.com' --form 'definition=@"./HotelReservationService.json"'
         ```
 
-    === "Sample Response"
+    === "Response"
         ```
         ---
-        name: "EmployeeServiceAPI"
-        basePath: "/RW1wbG95ZWVTZXJ2aWNlQVBJMy4xNA"
-        version: "3.14"
+        name: "Hotel Reservation API"
+        basePath: "/SG90ZWwgUmVzZXJ2YXRpb24gQVBJMS4wLjA"
+        version: "1.0.0"
         type: "REST"
         defaultVersion: false
+        subscriptionValidation: false
         endpointConfigurations:
             production:
-                endpoint: "http://employee-service:80"
+                endpoint: "http://hotel-service.backend:82"
         operations:
-        - target: "/employee"
+        - target: "/reservation"
             verb: "GET"
             secured: true
             scopes: []
-        - target: "/employee"
+        - target: "/reservation"
             verb: "POST"
             secured: true
             scopes: []
-        - target: "/employee/{employeeId}"
+        - target: "/reservation/{id}"
             verb: "PUT"
             secured: true
             scopes: []
-        - target: "/employee/{employeeId}"
+        - target: "/reservation/{id}"
             verb: "DELETE"
             secured: true
             scopes: []
         ```
 
-    === "Request Format"
-        ```
-        curl --location 'https://<host>:9095/api/configurator/1.1.0/apis/generate-configuration' \
-        --header 'Host: <host>' \
-        --form 'apiType="<api-type>"' \
-        --form 'definition=@"<path/to/EmployeeServiceDefinition.json>"'
-        ```
-
-2. You will get the apk-conf file content as the response. Save this content into a file named `EmployeeService.apk-conf`.
+2. You will get the apk-conf file content as the response. Save this content into a file named `HotelReservation.apk-conf`.
 
 ## Step 3 - Generate K8s custom resources and Deploy
 
-```
-curl --location 'https://api.am.wso2.com:9095/api/configurator/1.0.0/apis/generate-k8s-resources' \
---header 'Content-Type: multipart/form-data' \
---header 'Accept: application/zip' \
---form 'apkConfiguration=@"/Users/user/EmployeeService.apk-conf"' \
---form 'definitionFile=@"/Users/user/EmployeeServiceDefinition.json"' \
--k --output ./api-crds.zip
-```
+By invoking the Configuration Service, you can generate Kubernetes artifacts specifically tailored for APIs. These artifacts can be applied to a Kubernetes cluster using standard command-line tools like kubectl. 
+
+    ```
+    curl --location 'https://api.am.wso2.com:9095/api/configurator/1.0.0/apis/generate-k8s-resources' \
+    --header 'Content-Type: multipart/form-data' \
+    --header 'Accept: application/zip' \
+    --form 'apkConfiguration=@"/Users/user/EmployeeService.apk-conf"' \
+    --form 'definitionFile=@"/Users/user/EmployeeServiceDefinition.json"' \
+    -k --output ./api-crds.zip
+    ```
 
 The sample output of the generated zip file looks as follows.
 
@@ -112,55 +117,69 @@ The sample output of the generated zip file looks as follows.
 ```
 Once you have generated your K8s artifacts, the next step is to apply them to the Kubernetes API server. 
 
-```
-kubectl apply -f <path_to_extracted_zip_file> -n apk
-```
+    
+    kubectl apply -f <path_to_extracted_zip_file> -n apk
+    
 
 4. Execute the command below. You will be able to see that the `EmployeeServiceAPI` is successfully deployed as shown in the image.
 
-
-    === "Command"
-        ```
-        kubectl get apis -n apk
-        ```
+    ```
+    kubectl get apis -n apk
+    ```
 
 
 ## Step 4 - Get Access Token as Developer and store into variable.
 
-
+```
 curl -k --location 'https://am.wso2.com:443/oauth2/token' \
 --header 'Host: am.wso2.com' \
 --header 'Authorization: Basic WXNwOUVUN25XbTl5UW80aUhRMTZVZ09zQkwwYTo5U1dyd1ExQ1lmMDlwckUxcWZnb0lTcUVveU1h' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'grant_type=client_credentials' \
 --data-urlencode 'scope=apk:api_create'
-
+```
 
 ## Step 5 - Call API as developer using generated token
+
+```
 curl -k --location 'https://carbon.super.gw.wso2.com:9095/SG90ZWwgUmVzZXJ2YXRpb24gQVBJMS4wLjA/1.0.0/reservation' \
 --header 'Host: carbon.super.gw.wso2.com' \
---header "Authorization: bearer ${TOKEN}"
+--header "Authorization: bearer <Token>"
+```
 
+# Manage API From Control Plane¶
 
-APK CP
 Publisher URL - https://am.wso2.com/publisher
 Devportal URL - https://am.wso2.com/devportal
 
 
-API publisher
-Now development flow is completed and now i’m going to enhance this API further as product manager
-Up to this point API is not visible to external developers or appear in developer portal
-Now let me go through portal configurations as API product manager and enhance this API further
-Add thumbnail to API
-Add description to API
-Add documents and business contacts for API
-Then brief overview of runtime configuration section
-Then API tryout as publisher
-Finally API go to publish state
+Login to the Publisher Console (https://am.wso2.com/publisher) of the APK OCntrol Plane.
 
-API developer portal
-Show How API is now visible
-Then goto API and subscribe it
-Then get token and invoke API
+you can see the deploy Hotel reservation API as below.
 
-Do kubectl command will provide guide personally to access aks
+[![Architecture](resources/api.png)](resources/api.png)
+
+Go into the API and publish API.
+
+[![Architecture](resources/publish.png)](resources/publish.png)
+
+
+Go to developer portal and you can see the API There.
+Then go to subscription and subcribe to the API.
+
+[![Architecture](resources/subscribe.png)](resources/subscribe.png)
+
+Tryout API
+Go to tryout console and generate token with test token button.
+
+[![Architecture](resources/tokenGen.png)](resources/tokenGen.png)
+
+
+Finally Invoke API
+
+[![Architecture](resources/subscribe.png)](resources/subscribe.png)
+
+
+
+
+
