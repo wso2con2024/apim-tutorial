@@ -44,7 +44,7 @@ Apart from the above API definition file, we also need an `apk-conf` file that d
     | definition   | `EmployeeServiceDefinition.json` file that was downloaded at the beginning of [Step 2](#step-2-create-and-deploy-the-api)     |
 
 
-=== "Sample Request"
+    === "Sample Request"
         ```
         curl -k --location 'https://api.am.wso2.com:9095/api/configurator/1.1.0/apis/generate-configuration' \
         --header 'Host: api.am.wso2.com' \
