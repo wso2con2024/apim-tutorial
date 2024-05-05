@@ -14,13 +14,13 @@ Please follow guide to installing an APK with Control Plane [Setup](https://apk.
 
 # API Development Flow
 
-[![Architecture](../assets/img/apk-overview.png)](../assets/img/apk-overview.png)
+[![Architecture](resources/demo.png)](resources/demo.png)
 
 ## Step 1 - Create the Backend
 
-The endpoint "http://hotel-service.backend:82" provided in the above files points to a backend deployed on a kubernetes service. Prior to invoking the API, you will need to have this backend up. 
+Prior to invoking the API, you will need to have this backend up. 
 
-We have provided the file containing this sample backend [here](/backend.yaml). Download it and create the backend service using the following command.
+We have provided the file containing this sample backend [here](/resources/backend.yaml). Download it and create the backend service using the following command.
 
 ```
 kubectl apply -f ./employee-service-backend.yaml -n backend
@@ -37,17 +37,18 @@ kubectl get pods -n backend
 Apart from the above API definition file, we also need an `apk-conf` file that defines the configurations and metadata for this API. We have a configuration service that can be used to generate this apk-conf file when the OpenAPI definition is provided. 
 
 
-1. Execute the following request to generate the APK configuration. Use the values provided in the table below in the body of your request. 
+1. Execute the following request to generate the apk configuration. Use the values provided in the table below in the body of your request. 
 
-    | Field      | Value                                                                                                                     |
-    | ---------- | ------------------------------------------------------------------------------------------------------------------------- |
-    | definition | `EmployeeServiceDefinition.json` file that was downloaded at the beginning of [Step 2](#step-2-create-and-deploy-the-api) |
+    |    Field     |                               Value                                                      |
+    |--------------|------------------------------------------------------------------------------------------|
+    | definition   | `EmployeeServiceDefinition.json` file that was downloaded at the beginning of [Step 2](#step-2-create-and-deploy-the-api)     |
 
-    === "Sample Request"
+
+=== "Sample Request"
         ```
         curl -k --location 'https://api.am.wso2.com:9095/api/configurator/1.1.0/apis/generate-configuration' \
         --header 'Host: api.am.wso2.com' \
-        --form 'definition=@"/Users/user/EmployeeServiceDefinition.json"' > EmployeeService.apk-conf
+        --form 'definition=@"/Users/user/EmployeeServiceDefinition.json"'
         ```
 
     === "Sample Response"
@@ -123,4 +124,43 @@ kubectl apply -f <path_to_extracted_zip_file> -n apk
         kubectl get apis -n apk
         ```
 
-    [![Deployed API](../assets/img/get-started/deployed-api.png)](../assets/img/get-started/deployed-api.png)
+
+## Step 4 - Get Access Token as Developer and store into variable.
+
+
+curl -k --location 'https://am.wso2.com:443/oauth2/token' \
+--header 'Host: am.wso2.com' \
+--header 'Authorization: Basic WXNwOUVUN25XbTl5UW80aUhRMTZVZ09zQkwwYTo5U1dyd1ExQ1lmMDlwckUxcWZnb0lTcUVveU1h' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=client_credentials' \
+--data-urlencode 'scope=apk:api_create'
+
+
+## Step 5 - Call API as developer using generated token
+curl -k --location 'https://carbon.super.gw.wso2.com:9095/SG90ZWwgUmVzZXJ2YXRpb24gQVBJMS4wLjA/1.0.0/reservation' \
+--header 'Host: carbon.super.gw.wso2.com' \
+--header "Authorization: bearer ${TOKEN}"
+
+
+APK CP
+Publisher URL - https://am.wso2.com/publisher
+Devportal URL - https://am.wso2.com/devportal
+
+
+API publisher
+Now development flow is completed and now i’m going to enhance this API further as product manager
+Up to this point API is not visible to external developers or appear in developer portal
+Now let me go through portal configurations as API product manager and enhance this API further
+Add thumbnail to API
+Add description to API
+Add documents and business contacts for API
+Then brief overview of runtime configuration section
+Then API tryout as publisher
+Finally API go to publish state
+
+API developer portal
+Show How API is now visible
+Then goto API and subscribe it
+Then get token and invoke API
+
+Do kubectl command will provide guide personally to access aks

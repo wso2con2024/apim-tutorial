@@ -22,9 +22,9 @@ WSO2 APK adheres to the Kubernetes Gateway API specification, an open-source pro
 
 ## Characteristics of APK
 
-APK's microservices architecture offers advantages such as easy scalability and seamless upgrades, harnessing the benefits of the architecture for agility and flexibility.
-The separation of the control plane and data plane in APK allows users to integrate any control plane of their choice, providing maximum flexibility and customization.
-APK is an evolving open-source solution that delivers advanced API management capabilities and is designed for cloud-native architectures, seamlessly integrating with Kubernetes.
-With seamless CI/CD integration, APK supports a streamlined GitOps approach for efficient deployment and management of APIs.
-APK aims to provide API marketplace capabilities, enabling sharing, discovery, and reusability of APIs while focusing on efficient governance and administration.
-With its Kubernetes-native approach, exceptional characteristics, microservices architecture, and commitment to collaboration and innovation, APK sets a new standard for API management.
+- APK's microservices architecture offers advantages such as easy scalability and seamless upgrades, harnessing the benefits of the architecture for agility and flexibility.
+- The separation of the control plane and data plane in APK allows users to integrate any control plane of their choice, providing maximum flexibility and customization.
+- APK is an evolving open-source solution that delivers advanced API management capabilities and is designed for cloud-native architectures, seamlessly integrating with Kubernetes.
+- With seamless CI/CD integration, APK supports a streamlined GitOps approach for efficient deployment and management of APIs.
+- APK aims to provide API marketplace capabilities, enabling sharing, discovery, and reusability of APIs while focusing on efficient governance and administration.
+
