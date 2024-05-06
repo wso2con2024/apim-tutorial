@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="TelecomMetricsAggregationAPI" groupId="com.example.api" version="1.0.0-SNAPSHOT" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/TelecomMetricsAggregationAPI.xml</file>
+    </artifact>
+    <artifact name="TelecomMetricsAggregationAPI_swagger" groupId="com.example.metadata" version="1.0.0-SNAPSHOT" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/TelecomMetricsAggregationAPI_swagger.yaml</file>
+    </artifact>
+    <artifact name="TelecomMetricsAggregationAPI_metadata" groupId="com.example.metadata" version="1.0.0-SNAPSHOT" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/TelecomMetricsAggregationAPI_metadata.yaml</file>
+    </artifact>
+    <artifact name="NexusEndpoint" groupId="com.example.endpoint" version="1.0.0-SNAPSHOT" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/NexusEndpoint.xml</file>
+    </artifact>
+    <artifact name="WishqueEndpoint" groupId="com.example.endpoint" version="1.0.0-SNAPSHOT" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/WishqueEndpoint.xml</file>
+    </artifact>
+    <artifact name="TenetEndpoint" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/TenetEndpoint.xml</file>
+    </artifact>
+</artifacts>

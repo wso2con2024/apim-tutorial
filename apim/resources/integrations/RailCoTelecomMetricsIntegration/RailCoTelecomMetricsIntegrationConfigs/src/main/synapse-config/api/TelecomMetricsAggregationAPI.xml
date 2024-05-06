@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/metrics" name="TelecomMetricsAggregationAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/telecom-metrics">
+        <inSequence>
+            <log level="custom">
+                <property name="Status" value="Calling Nexus Endpoint..."/>
+            </log>
+            <call>
+                <endpoint key="NexusEndpoint"/>
+            </call>
+            <propertyGroup>
+                <property expression="json-eval($.bookings.total)" name="Nexus_TOTAL" scope="default" type="STRING"/>
+                <property expression="json-eval($.bookings.class-break-down.first)" name="Nexus_FIRST" scope="default" type="STRING"/>
+                <property expression="json-eval($.bookings.class-break-down.second)" name="Nexus_SECOND" scope="default" type="STRING"/>
+                <property expression="json-eval($.bookings.class-break-down.third)" name="Nexus_THIRD" scope="default" type="STRING"/>
+            </propertyGroup>
+            <log level="custom">
+                <property name="Status" value="Calling Wishque Endpoint..."/>
+            </log>
+            <call>
+                <endpoint key="WishqueEndpoint"/>
+            </call>
+            <propertyGroup>
+                <property expression="//metrics/summary/text()" name="Wishque_TOTAL" scope="default" type="STRING"/>
+                <property expression="//metrics/class/class1st/text()" name="Wishque_FIRST" scope="default" type="STRING"/>
+                <property expression="//metrics/class/class2nd/text()" name="Wishque_SECOND" scope="default" type="STRING"/>
+                <property expression="//metrics/class/class3rd/text()" name="Wishque_THIRD" scope="default" type="STRING"/>
+            </propertyGroup>
+            <log level="custom">
+                <property name="Status" value="Calling Tenet Endpoint..."/>
+            </log>
+            <payloadFactory media-type="xml">
+                <format>
+                    <soap:Envelope xmlns:met="http://metrics.tenet.org" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+                        <soap:Header/>
+                        <soap:Body>
+                            <met:getMetricsRequest/>
+                        </soap:Body>
+                    </soap:Envelope>
+                </format>
+                <args/>
+            </payloadFactory>
+            <call>
+                <endpoint key="TenetEndpoint"/>
+            </call>
+            <propertyGroup>
+                <property expression="//ns2:getMetricsResponse/ns2:summary/ns2:total/text()" name="Tenet_TOTAL" scope="default" type="STRING" xmlns:ns2="http://metrics.tenet.org"/>
+                <property expression="//ns2:getMetricsResponse/ns2:summary/ns2:breakdown[@class='1st']/text()" name="Tenet_FIRST" scope="default" type="STRING" xmlns:ns2="http://metrics.tenet.org"/>
+                <property expression="//ns2:getMetricsResponse/ns2:summary/ns2:breakdown[@class='2nd']/text()" name="Tenet_SECOND" scope="default" type="STRING" xmlns:ns2="http://metrics.tenet.org"/>
+                <property expression="//ns2:getMetricsResponse/ns2:summary/ns2:breakdown[@class='3rd']/text()" name="Tenet_THIRD" scope="default" type="STRING" xmlns:ns2="http://metrics.tenet.org"/>
+            </propertyGroup>
+            <log level="custom">
+                <property name="Status" value="Aggregating response and sending back..."/>
+            </log>
+            <payloadFactory media-type="json" template-type="freemarker">
+                <format><![CDATA[{
+                "bookings" : {
+                "tenet" : {
+                "total" : ${ctx.Tenet_TOTAL},
+                "breakdown": [${ctx.Tenet_FIRST},${ctx.Tenet_SECOND}, ${ctx.Tenet_THIRD}]
+                },
+                "wishque" : {
+                "total" : ${ctx.Wishque_TOTAL},
+                "breakdown": [${ctx.Wishque_FIRST},${ctx.Wishque_SECOND}, ${ctx.Wishque_THIRD}]
+                },
+                "nexus" : {
+                "total" : ${ctx.Nexus_TOTAL},
+                "breakdown": [${ctx.Nexus_FIRST}, ${ctx.Nexus_SECOND}, ${ctx.Nexus_THIRD}]
+                }
+                }
+                }]]></format>
+                <args/>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

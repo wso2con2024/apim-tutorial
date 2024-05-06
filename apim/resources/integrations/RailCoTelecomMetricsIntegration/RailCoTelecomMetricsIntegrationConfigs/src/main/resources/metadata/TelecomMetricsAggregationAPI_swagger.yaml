@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: TelecomMetricsAggregationAPI
+  description: API Definition of TelecomMetricsAggregationAPI
+  version: 1.0.0
+servers:
+- url: http://mi.apim.com/metrics
+paths:
+  /telecom-metrics:
+    get:
+      responses:
+        default:
+          description: Default response

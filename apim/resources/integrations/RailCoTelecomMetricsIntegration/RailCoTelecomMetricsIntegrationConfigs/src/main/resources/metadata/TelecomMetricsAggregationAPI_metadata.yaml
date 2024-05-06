@@ -1,0 +1,10 @@
+---
+key : "TelecomMetricsAggregationAPI-1.0.0"
+name : "TelecomMetricsAggregationAPI"
+displayName : "TelecomMetricsAggregationAPI"
+description: "Sample API"
+version: "1.0.0"
+serviceUrl: "http://mi.apim.com/metrics"
+definitionType: "OAS3"
+securityType: "BASIC"
+mutualSSLEnabled: false
