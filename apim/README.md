@@ -24,8 +24,12 @@ In today's digital world, managing APIs is crucial for organizations aiming to s
 
 ## Prerequisites
 
-- [WSO2 API Manage v4.3.0](https://wso2.com/api-manager/)
 - JDK 17 or higher
-- [Apache Tomcat 10.x](https://tomcat.apache.org/download-10.cgi)
-- [Postman](https://www.postman.com/downloads/)
-- [wscat](https://www.npmjs.com/package/wscat/v/5.0.0)
+- [WSO2 API Manager v4.3.0](https://wso2.com/api-manager/)
+- [WSO2 Micro Integrator v4.2.0](https://wso2.com/micro-integrator/)
+- [Apache Tomcat 9.x](https://tomcat.apache.org/download-10.cgi)
+- cURL
+- wscat
+- Node.js (https://nodejs.org/)
+- Apache Maven
+
