@@ -1,11 +1,15 @@
 # GraphQL APIs
 
+## Prerequisites
+
+Ensure that the GraphQL backend server is operational. You can refer to the instructions in the [ReadMe](../resources/backends/graphql-backend/README.md) for setup guidance.
+
 1. **Download GraphQL Schema**
    - Download the schema from the following link: 
      `https://github.com/wso2/samples-apim/blob/demo_2024/apim-tutorial/backends/graphql-backend/data/schema_graphql.graphql`
 
 2. **Access the Publisher Portal**
-Navigate to → [API Publisher](https://localhost:9443/publisher).
+   Navigate to → [API Publisher](https://localhost:9443/publisher).
 
 3. **Create API**
    - Click `Create API`.
@@ -15,12 +19,12 @@ Navigate to → [API Publisher](https://localhost:9443/publisher).
 
 4. **API Details**
    - Enter the required details:
-```
-Name: `[API_name]`
-Context: `[API_context]`
-Version: `[API_version]`
-Endpoint: `[API_endpoint]`
-```
+     ```
+     Name: `[API_name]`
+     Context: `[API_context]`
+     Version: `[API_version]`
+     Endpoint: `[API_endpoint]`
+     ```
    - Click `Create`.
 
 5. **Deploy and Publish**
@@ -49,7 +53,7 @@ Endpoint: `[API_endpoint]`
      }
      ```
 
-9. **Open New Tab in Devportal**
+9. **Open New Tab in Developer Portal**
    - In a new tab, visit the Developer Portal.
 
 10. **Create a New Application**

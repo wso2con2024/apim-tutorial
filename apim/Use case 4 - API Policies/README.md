@@ -1,17 +1,21 @@
 # API Policies
 
+## Prerequisites
+
+Make sure to have completed the steps outlined in [Use case 1 - API Creation](../Use%20case%201%20-%20API%20Creation/README.md).
+
 1. **Open the API Publisher**
 
-Navigate to → [API Publisher](https://localhost:9443/publisher) and log in with your credentials:
+   Navigate to [API Publisher](https://localhost:9443/publisher) and log in with your credentials:
 
-```
-Username: devuser
-Password: user123
-```
+   ```
+   Username: devuser
+   Password: user123
+   ```
 
 2. **Select API**
 
-Choose `StationInformation`.
+   Choose `StationInformation`.
 
 3. **API Configurations**
 

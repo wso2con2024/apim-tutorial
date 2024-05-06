@@ -2,109 +2,113 @@
 
 Follow these steps to create and deploy an API in the API Publisher.
 
-## Step 1: Access the API Publisher
+## Prerequisites
 
-Navigate to [API Publisher](https://localhost:9443/publisher) and log in with your credentials:
+Ensure that the Train Operation application is deployed on the Tomcat server. You can refer to the instructions provided in the [ReadMe](../resources/backends/train-operations/README.md) for setup guidance.
 
-```
-Username: apiprovider
-Password: user123
-```
+1. **Access the API Publisher**
 
-## Step 2: Create API
+    Navigate to [API Publisher](https://localhost:9443/publisher) and log in with your credentials:
 
-Select **REST API** and choose **Start From Scratch**. Enter the following details and click **Create**:
+    ```
+    Username: apiprovider
+    Password: user123
+    ```
 
-```
-Name: StationInformation
-Context: station-information
-Version: 1.0.0
-Endpoint: <specify_endpoint_here>
-```
+2. **Create API**
 
-## Step 3: Portal Configurations
+    Select **REST API** and choose **Start From Scratch**. Enter the following details and click **Create**. Replace <tomcat-server-ip> and <port> accordingly.
 
-1. Select **Portal Configurations**.
-2. Select **Basic Info** and update the following information:
+    ```
+    Name: StationInformation
+    Context: station-information
+    Version: 1.0.0
+    Endpoint: http://<tomcat-server-ip>:<port>/train-operations/v1/
+    ```
 
-```
-Image: <link_to_image>
-Description: Station information API
-Tags: train, information, gogo
-Make this the default version: Yes
-GitHub URL: https://github.com/gogo/station-information
-Slack URL: https://app.slack.com/huddle/T06U35HMPPA/C06TEBVVALS
-```
+3. **Portal Configurations**
 
-3. Click **Save** to update the basic information.
+    1. Select **Portal Configurations**.
+    2. Select **Basic Info** and update the following information:
 
-## Step 4: Business Info
+    ```
+    Image: <link_to_image>
+    Description: Station information API
+    Tags: train, information, gogo
+    Make this the default version: Yes
+    GitHub URL: https://github.com/gogo/station-information
+    Slack URL: https://app.slack.com/huddle/T06U35HMPPA/C06TEBVVALS
+    ```
 
-Update the following business information and click **Save**:
+    3. Click **Save** to update the basic information.
 
-```
-Business Owner: Boby
-Business Owner Email: boby@gogo.com
-Technical Owner: Boby
-Technical Owner Email: boby@gogo.com
-```
+4. **Business Info**
 
-## Step 5: Documentation
+    Update the following business information and click **Save**:
 
-1. Select **Document**.
-2. Click **Add New Document** and provide the following:
+    ```
+    Business Owner: Boby
+    Business Owner Email: boby@gogo.com
+    Technical Owner: Boby
+    Technical Owner Email: boby@gogo.com
+    ```
 
-```
-Name: Station Information API Documentation
-Summary: This documentation provides a detailed guide for developers on how to interact with the Station API.
-Type: <specify_document_type>
-Source: Markdown
-```
+5. **Documentation**
 
-3. Click **Add Document**. Then click **Add Content**.
-4. Copy the content from <source> and paste it into the window. Then click **Update Content**.
+    1. Select **Document**.
+    2. Click **Add New Document** and provide the following:
 
-## Step 6: Comments
+    ```
+    Name: Station Information API Documentation
+    Summary: This documentation provides a detailed guide for developers on how to interact with the Station API.
+    Type: <specify_document_type>
+    Source: Markdown
+    ```
 
-Add the following comment:
+    3. Click **Add Document**. Then click **Add Content**.
+    4. Copy the content from <source> and paste it into the window. Then click **Update Content**.
 
-> Hello developers! We invite you to explore and test our Train Station API. Your feedback is valuable to us, so please give it a try and share your thoughts with us. We appreciate your input!
+6. **Comments**
 
-Click **Comment** to save the comment.
+    Add the following comment:
 
-## Step 7: API Configuration
+    > Hello developers! We invite you to explore and test our Train Station API. Your feedback is valuable to us, so please give it a try and share your thoughts with us. We appreciate your input!
 
-1. Select **API Configurations** and then **Resources**.
-2. Add the following two resources to the API:
+    Click **Comment** to save the comment.
 
-   - **Retrieve stations**
-     - **HTTP Verb:** GET
-     - **URI Pattern:** /stations
-   - **Retrieve specific station**
-     - **HTTP Verb:** GET
-     - **URI Pattern:** /stations/{station_id}
+7. **API Configuration**
 
-3. Click **Endpoints** and select **HTTP/ REST Endpoint**.
-4. Update the endpoints as follows:
+    1. Select **API Configurations** and then **Resources**.
+    2. Add the following two resources to the API:
 
-```
-Production Endpoint: http://backend-service:8080/train-operations/v1
-Sandbox Endpoint: http://backend-service:8080/train-operations/v1
-```
+        - **Retrieve stations**
+            - **HTTP Verb:** GET
+            - **URI Pattern:** /stations
+        - **Retrieve specific station**
+            - **HTTP Verb:** GET
+            - **URI Pattern:** /stations/{station_id}
 
-5. Click **Save** to update the endpoints.
+    3. Click **Endpoints** and select **HTTP/ REST Endpoint**.
+    4. Update the endpoints as follows:
 
-## Step 8: API Definition and Deployment
+    ```
+    Production Endpoint: http://backend-service:8080/train-operations/v1
+    Sandbox Endpoint: http://backend-service:8080/train-operations/v1
+    ```
 
-1. Select **API Definition** and Click **Edit**.
-2. Replace the API Definition with <resources station_information_api.yaml>.
-3. Click **Update Content** then click **Save**.
-4. To deploy the API, under **Deploy**, select **Deployments**.
-5. Select **Default** gateway and click **Deploy**.
+    5. Click **Save** to update the endpoints.
 
-## Step 9: Testing and Publishing
+8. **API Definition and Deployment**
 
-1. Under **Test**, select **Try Out**.
-2. Select the created resources and click **Try it out**. Then click **Execute** to invoke the resources.
-3. Under **Publish**, select **Lifecycle**.
-4. Then click **Publish** to publish the API.
+    1. Select **API Definition** and Click **Edit**.
+    2. Replace the API Definition with <resources station_information_api.yaml>.
+    3. Click **Update Content** then click **Save**.
+    4. To deploy the API, under **Deploy**, select **Deployments**.
+    5. Select **Default** gateway and click **Deploy**.
+
+9. **Testing and Publishing**
+
+    1. Under **Test**, select **Try Out**.
+    2. Select the created resources and click **Try it out**. Then click **Execute** to invoke the resources.
+    3. Under **Publish**, select **Lifecycle**.
+    4. Then click **Publish** to publish the API.

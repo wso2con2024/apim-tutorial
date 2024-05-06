@@ -2,12 +2,12 @@
 
 1. **Access the Admin Portal**
 
-Visit [Admin Portal](https://localhost:9443/admin) and log in using the following credentials:
+    Visit [Admin Portal](https://localhost:9443/admin) and log in using the following credentials:
 
-```
-Username: admin
-Password: admin
-```
+    ```
+    Username: admin
+    Password: admin
+    ```
 
 2. **Add custom linter rules**
    - Go to **Settings** → **Advanced**.
