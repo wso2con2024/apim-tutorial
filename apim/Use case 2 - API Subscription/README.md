@@ -5,14 +5,18 @@ Navigate to → [API Publisher](https://localhost:9443/devportal).
 
 ## Step 2: Authentication
 Log in with your credentials:
-- **Username:** devuser
-- **Password:** user123
+```
+Username: devuser
+Password: user123
+```
 
 ## Step 3: Use API Marketplace Assistant
 1. Click the chat icon → Open **API Marketplace Assistant**.
 2. Use this tool to search for APIs using natural language. Example queries include:
-   - "I need to build an application for train station information. Can you propose APIs for that?"
-   - "What is the difference between these two APIs?”
+```
+I need to build an application for train station information. Can you propose APIs for that?
+What is the difference between these two APIs?
+```
 
 ## Step 4: Interact with APIs
 - Select APIs from the assistant's answers → Open the API in development mode.
@@ -20,9 +24,11 @@ Log in with your credentials:
 ## Step 5: Create and Subscribe to Applications
 1. Select **Applications** → Click **ADD NEW APPLICATION**.
 2. Fill in the fields and click **Save**:
-   - **Application Name:** [name]
-   - **Shared Quota for Application Tokens:** [quota]
-   - **Application Description:** [description]
+```
+Application Name: [name]
+Shared Quota for Application Tokens: [quota]
+Application Description: [description]
+```
 
 ## Step 6: Subscribe to the API
 - Navigate to **Subscriptions** → Click **SUBSCRIBE APIS**.
@@ -41,8 +47,10 @@ Log in with your credentials:
 1. Navigate to **Try Out** → Select **API CHAT**.
 2. Click **CONFIGURE KEY**, paste the previously copied Access Token → Click **Done**.
 3. Enter your query → Click **EXECUTE**. Example queries include:
-   - "Find me the station named ‘King's Cross’"
-   - "Get the station named Waterloo and add a platform named 'Platform 9 3/4' with 500 capacity"
+```
+Find me the station named ‘King's Cross’
+Get the station named Waterloo and add a platform named 'Platform 9 3/4' with 500 capacity
+```
 
 ## Step 10: Rate and Comment on the API
 1. To rate the API, go to the **Overview** page → Click the star icon.

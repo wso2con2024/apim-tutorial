@@ -15,10 +15,12 @@ Navigate to → [API Publisher](https://localhost:9443/publisher).
 
 4. **API Details**
    - Enter the required details:
-     - **Name:** `[API_name]`
-     - **Context:** `[API_context]`
-     - **Version:** `[API_version]`
-     - **Endpoint:** `[API_endpoint]`
+```
+Name: `[API_name]`
+Context: `[API_context]`
+Version: `[API_version]`
+Endpoint: `[API_endpoint]`
+```
    - Click `Create`.
 
 5. **Deploy and Publish**

@@ -4,8 +4,10 @@
 Navigate to → [API Publisher](https://localhost:9443/publisher).
 
 2. **Log in**
-   - **Username:** `apiprovider`
-   - **Password:** `user123`
+```
+Username: devuser
+Password: user123
+```
 
 3. **Select API**
    - Choose `StationInformation`.
@@ -19,19 +21,24 @@ Navigate to → [API Publisher](https://localhost:9443/publisher).
 6. **Add Header Policy**
    - Drag and drop the `Add Header` policy to the `/stations GET` resource request flow.
    - **Header Details:**
-     - **Header Name:** `X-Client-ID`
-     - **Header Value:** `abc123def456ghi789`
-     - **Apply to all resources:** true
+```
+Header Name: `X-Client-ID`
+Header Value: `abc123def456ghi789`
+Apply to all resources: true
+```
    - Click `Save`.
 
 7. **Create API-specific Policy**
    - Click `Add New Policy`.
    - **Policy Details:**
-     - **Name:** `Transform Payload`
-     - **Version:** 1
-     - **Description:** Payload transformation policy to return a lightweight response.
-     - **Applicable Flows:** Response
-     - **Supported API Types:** HTTP
+```
+Name: `Transform Payload`
+Version: 1
+Description: Payload transformation policy to return a lightweight response.
+Applicable Flows: Response
+Supported API Types: HTTP
+```
+
      - **Policy File:**
        Attach the `transform-payload.j2` file.
        ```xml

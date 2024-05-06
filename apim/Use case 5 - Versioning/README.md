@@ -4,8 +4,10 @@
     - Navigate to → [API Publisher](https://localhost:9443/publisher)
 
 2. **Log in with your credentials:**
-    - **Username:** devuser
-    - **Password:** user123
+```
+Username: devuser
+Password: user123
+```
 
 3. **Select the API**
     - Navigate to the API listing page and select the **StationInformation** API
@@ -13,8 +15,10 @@
 4. **Create new version**
     - Click **Create New Version**
     - **New version details:**
-        - **New Version:** `2.0.0`
-        - **Make this the default version:** `Yes`
+```
+New Version: `2.0.0`
+Make this the default version: `Yes`
+```
 
 5. **Update the API definition with version 2.0.0**
     - Navigate to  **API Configurations** → **API Definition**
