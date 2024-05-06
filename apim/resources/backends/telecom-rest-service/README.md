@@ -14,7 +14,7 @@
 ## Deploy to Tomcat
 - Copy the WAR file generated in the previous step to the `webapps` directory within the Tomcat installation directory:
   ```bash
-  cp target/telecom-soap-service.war /path/to/tomcat/webapps/
+  cp target/telecom-rest-service.war /path/to/tomcat/webapps/
   ```
   Replace `/path/to/tomcat` with the actual path to your Tomcat installation directory.
 
@@ -31,5 +31,5 @@
 ## Accessing the Web Application
 - Once Tomcat has started and deployed your application, you can access it via a web browser:
   ```
-  http://localhost:8080/telecom-soap-service/
+  http://localhost:8080/telecom-rest-service/
   ```
