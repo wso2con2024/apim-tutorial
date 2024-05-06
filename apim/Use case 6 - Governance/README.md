@@ -1,98 +1,87 @@
-# Use case 5 - Versioning
+# Use Case 5 - Governance
 
 1. **Access the Admin Portal**
-    - Navigate to → [Admin](https://localhost:9443/admin)
+   - Visit [Admin](https://localhost:9443/admin).
 
 2. **Log in with your credentials:**
-```
-Username: admin
-Password: admin
-```
+   ```
+   Username: admin
+   Password: admin
+   ```
 
 3. **Add custom linter rules**
-    - Navigate to  **Settings** → **Advanced**.
-    - Copy the [linter rules](../resources/scripts/linter-rules/rule.json) and add as a advanced configurations.
-    - Click **Save** to update configurations.
+   - Go to **Settings** → **Advanced**.
+   - Paste the [linter rules](../resources/scripts/linter-rules/rule.json) into the advanced configurations.
+   - Click **Save** to update the configurations.
 
 4. **Add role visibility**
-    - Navigate to  **Rate Limiting Policy** → **Subscription Policies**.
-    - Click **Add Policy** and fill in the following fields:
-```
-Name: HRAdminPolicy
-Display Name: HR Admin Policy
-Description: Only allows users with hr_admin role is allowed to use this subscription policy.
-Request count: 10000
-Unit Time: 1
-Permissions: Allow
-Roles: hr_admin
-```
-    - Click **Save**.
+   - Navigate to **Rate Limiting Policy** → **Subscription Policies**.
+   - Click **Add Policy** and fill out the fields:
+   ```
+   Name: HRAdminPolicy
+   Display Name: HR Admin Policy
+   Description: Only users with the hr_admin role can use this subscription policy.
+   Request count: 10000
+   Unit Time: 1
+   Permissions: Allow
+   Roles: hr_admin
+   ```
+   - Click **Save**.
 
 5. **Deploy the OPA Policy**
-    - Make sure you have OPA installed as mentioned in the tutorial prerequisites.
-    - Execute the opa policy in [opapolicy.sh](../resources/scripts/opa/opapolicy.sh) to publisher the Rego policy to the OPA server. Note the `OPA Policy published` message after successfull execution of the script.
+   - Ensure OPA is installed as per the tutorial prerequisites.
+   - Run the OPA policy using [opapolicy.sh](../resources/scripts/opa/opapolicy.sh) to publish the Rego policy to the OPA server. Verify the `OPA Policy published` message upon successful execution.
 
 6. **Access the Publisher Portal**
-    - Navigate to → [Publisher Portal](https://localhost:9443/publisher).
-    - Log in with following credentials.
+   - Go to [Publisher Portal](https://localhost:9443/publisher).
+   - Log in with the provided credentials:
+   ```
+   Username: <username>
+   Password: <password>
+   ```
 
-```
-Username: <username>
-Password: <password>
-```
+7. **Create an API with OpenAPI Definition**
+   - Choose **Create API** → **Import Open API**.
+   - Select **OpenAPI File/Archive** and upload [swagger-with-errors.yaml](../resources/APIs/employee/swagger-with-errors.yaml), which violates the previously set linter rules.
+   - Note the inability to proceed due to rule violations.
+   - Select [swagger.yaml](../resources/APIs/employee/swagger.yaml) instead, adhering to the linter rules.
+   - Click **Next**.
+   - Choose **Regular Gateway** and proceed with API creation.
 
-7. **Create an API with Open API Definition**
-    - Select **Create API** → **Import Open API**.
-    - Select **OpenAPI File/Archive**. Now select the [swagger-with-errors.yaml](../resources/APIs/employee/swagger-with-errors.yaml). This is a OpenAPI definition that violate the few linter rules we set previously.
-    - Note that you are not allowed to proceed with API creation.
-    - Now select [swagger.yaml](../resources/APIs/employee/swagger.yaml) which adhere to the linter rules we set before.
-    - Click **Next**.
-    - Select **Regular Gateway** and create the API.
+8. **Attach the policy to a resource**
+   - Navigate to **API Configurations** → **Policies**.
+   - Expand the `contract/{employee_id}` resource.
+   - Drag and drop the `Validate Request with OPA` policy to the request flow.
+   - Provide the following details, replacing placeholders with your setup:
+   ```
+   Opa Server URL: http://<server-ip>:<port>/v1/data
+   Policy: employees
+   Rule: allow
+   ```
+   - Click **Save** to add the policy.
+   - Then click **Save and deploy** to publish the API.
 
-8. **Attach the polcy to a resources**
-    - Go to  **API Configurations** → **Policies**.
-    - Expand `contract/{employee_id} ` resource.
-    - Drag and drop the `Validate Request with OPA` policy to the request flow.
-    - Fill in the following information. Replace <server-ip> and <port> with your setup.
-```
-Opa Server URL: http://<server-ip>:<port>/v1/data
-Policy: employees
-Rule: allow
-Rego policy https://github.com/wso2/samples-apim/blob/demo_2024/apim-tutorial/resources/opa/policy.rego 
-```
+9. **Approve the Publish of the API**
+   - Visit [Admin Portal](https://localhost:9443/admin).
+   - Log in using:
+   ```
+   Username: <username>
+   Password: <password>
+   ```
+   - Navigate to **Tasks** → **API State Change**.
+   - Approve the publish of the API.
 
-    - Click **Save** to add the polcy.
-    - Now click **Save and deploy** to publish the API.
-
-8. **Approve Publish of the API**
-    - Navigate to → [Admin Portal](https://localhost:9443/admin).
-    - Log in with following credentials.
-
-```
-Username: <username>
-Password: <password>
-```
-    - Select **Tasks** → **API State Change**.
-    - Now approve the Publish of the API.
-
-9. **Invoke the API**
-    - Navigate to → [Developer Portal](https://localhost:9443/devportal).
-    - Log in with following credentials.
-
-```
-Username: suzy
-Password: <password>
-```
-    - Try to subscribe and invoke the API as we did before.
-    - Note you are not allowed to invoke the API. 
-    - Login with a user with the role `hr_admin`
-
-```
-Username: tom
-Password: <password>
-```
-    - Now subscribe and invoke the API.
-
-
-
-
+10. **Invoke the API**
+    - Go to [Developer Portal](https://localhost:9443/devportal).
+    - Log in with:
+    ```
+    Username: suzy
+    Password: <password>
+    ```
+    - Attempt to subscribe and invoke the API, noting the restriction.
+    - Then log in with a user having the `hr_admin` role:
+    ```
+    Username: tom
+    Password: <password>
+    ```
+    - Subscribe and invoke the API successfully.
