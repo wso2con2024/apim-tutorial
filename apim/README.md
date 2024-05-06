@@ -3,6 +3,7 @@
 ## Overview
 
 In today's digital world, managing APIs is crucial for organizations aiming to succeed in a connected environment. This tutorial explores how to use API Management (APIM) to drive innovation, collaboration, and seamless experiences. By following the tutorial, participants learn practical ways to use APIM Manager to manage APIs throughout their lifecycle, effective design, ensure security and compliance, improve performance, and create a better experience for developers. 
+
 ## Features
 
 - Understand the importance of API management in digital transformation.
@@ -28,6 +29,7 @@ In today's digital world, managing APIs is crucial for organizations aiming to s
 - [WSO2 API Manager v4.3.0](https://wso2.com/api-manager/)
 - [WSO2 Micro Integrator v4.2.0](https://wso2.com/micro-integrator/)
 - [Apache Tomcat 9.x](https://tomcat.apache.org)
+- [API Controller](https://wso2.com/api-manager/tooling/)
 - cURL
 - wscat
 - [Node.js](https://nodejs.org/)
