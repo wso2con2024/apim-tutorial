@@ -30,6 +30,9 @@ In today's digital world, managing APIs is crucial for organizations aiming to s
 - [Apache Tomcat 9.x](https://tomcat.apache.org/download-10.cgi)
 - cURL
 - wscat
-- Node.js (https://nodejs.org/)
+- [Node.js](https://nodejs.org/)
 - Apache Maven
+- [OPA](https://www.openpolicyagent.org/docs/v0.11.0/get-started/)
+- Setup Backends:
+Follow the [guides](./resources/backend) provided in the repository to set up the backends. Ensure you carefully follow each step mentioned in the guides to configure and deploy the backend components correctly.
 
