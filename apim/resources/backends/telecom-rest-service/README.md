@@ -1,4 +1,4 @@
-# Building and Deploying a Java Web Application with Tomcat
+# Building and Deploying a Telcom REST service Application with Tomcat
 
 ## Prerequisites
 - **Java Installation:** Ensure that you have Java Development Kit (JDK) installed on your system.

@@ -1,7 +1,7 @@
 
-# TrainSchedule GraphQL Server
+# GraphQL Server Setup
 
-## Installation Instructions
+## Prerequisites
 
 Ensure you have Node.js version 16 installed to manage the WebSocket server. If you need to install Node.js, follow these steps:
 1. Visit the [Node.js Download Page](https://nodejs.org/en/).
