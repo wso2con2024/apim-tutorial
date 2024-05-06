@@ -1,4 +1,4 @@
-# Use case 8 - GraphQL APIs
+# GraphQL APIs
 
 1. **Download GraphQL Schema**
    - Download the schema from the following link: 

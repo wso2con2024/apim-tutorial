@@ -1,20 +1,20 @@
-# Use Case 5 - Governance
+# Governance
 
 1. **Access the Admin Portal**
-   - Visit [Admin](https://localhost:9443/admin).
 
-2. **Log in with your credentials:**
-   ```
-   Username: admin
-   Password: admin
-   ```
+Visit [Admin Portal](https://localhost:9443/admin) and log in using the following credentials:
 
-3. **Add custom linter rules**
+```
+Username: admin
+Password: admin
+```
+
+2. **Add custom linter rules**
    - Go to **Settings** → **Advanced**.
    - Paste the [linter rules](../resources/scripts/linter-rules/rule.json) into the advanced configurations.
    - Click **Save** to update the configurations.
 
-4. **Add role visibility**
+3. **Add role visibility**
    - Navigate to **Rate Limiting Policy** → **Subscription Policies**.
    - Click **Add Policy** and fill out the fields:
    ```
@@ -28,11 +28,11 @@
    ```
    - Click **Save**.
 
-5. **Deploy the OPA Policy**
+4. **Deploy the OPA Policy**
    - Ensure OPA is installed as per the tutorial prerequisites.
    - Run the OPA policy using [opapolicy.sh](../resources/scripts/opa/opapolicy.sh) to publish the Rego policy to the OPA server. Verify the `OPA Policy published` message upon successful execution.
 
-6. **Access the Publisher Portal**
+5. **Access the Publisher Portal**
    - Go to [Publisher Portal](https://localhost:9443/publisher).
    - Log in with the provided credentials:
    ```
@@ -40,7 +40,7 @@
    Password: <password>
    ```
 
-7. **Create an API with OpenAPI Definition**
+6. **Create an API with OpenAPI Definition**
    - Choose **Create API** → **Import Open API**.
    - Select **OpenAPI File/Archive** and upload [swagger-with-errors.yaml](../resources/APIs/employee/swagger-with-errors.yaml), which violates the previously set linter rules.
    - Note the inability to proceed due to rule violations.
@@ -48,7 +48,7 @@
    - Click **Next**.
    - Choose **Regular Gateway** and proceed with API creation.
 
-8. **Attach the policy to a resource**
+7. **Attach the policy to a resource**
    - Navigate to **API Configurations** → **Policies**.
    - Expand the `contract/{employee_id}` resource.
    - Drag and drop the `Validate Request with OPA` policy to the request flow.
@@ -61,7 +61,7 @@
    - Click **Save** to add the policy.
    - Then click **Save and deploy** to publish the API.
 
-9. **Approve the Publish of the API**
+8. **Approve the Publish of the API**
    - Visit [Admin Portal](https://localhost:9443/admin).
    - Log in using:
    ```
@@ -71,7 +71,7 @@
    - Navigate to **Tasks** → **API State Change**.
    - Approve the publish of the API.
 
-10. **Invoke the API**
+9. **Invoke the API**
     - Go to [Developer Portal](https://localhost:9443/devportal).
     - Log in with:
     ```

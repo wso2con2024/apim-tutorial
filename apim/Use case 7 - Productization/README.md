@@ -1,4 +1,4 @@
-# Use Case 7: Productization
+# Productization
 
 1. **Login to Admin Portal**
 Navigate to → [Admin Portal](https://localhost:9443/admin).
