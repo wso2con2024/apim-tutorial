@@ -1,7 +1,7 @@
 # Use case 4 - API Policies
 
 1. **Open the API Publisher**
-   - Navigate to `https://localhost:9443/publisher`.
+Navigate to → [API Publisher](https://localhost:9443/publisher).
 
 2. **Log in**
    - **Username:** `apiprovider`
