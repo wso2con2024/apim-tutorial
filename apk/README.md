@@ -47,7 +47,7 @@ kubectl get pods -n backend
     | --------- | ------------------- |
     | 127.0.0.1 | api.am.wso2.com default.gw.wso2.com idp.am.wso2.com carbon.super.gw.wso2.com  |
 
-## Step 2 - Generate APK configuration file from the OpenAPI definition
+## Step 3 - Generate APK configuration file from the OpenAPI definition
 
 1. Save and download the sample [HotelReservationService.json](resources/HotelReservationService) file. This is the OAS definition of the API that we are going to deploy in APK.
 
@@ -95,7 +95,7 @@ operations:
 
 4. You will get the apk-conf file content as the response. Save this content into a file named `HotelReservation.apk-conf`.
 
-## Step 3 - Generate K8s custom resources and Deploy
+## Step 4 - Generate K8s custom resources and Deploy
 
 By invoking the Configuration Service, you can generate Kubernetes artifacts specifically tailored for APIs. These artifacts can be applied to a Kubernetes cluster using standard command-line tools like kubectl. 
 
