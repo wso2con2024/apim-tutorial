@@ -23,7 +23,7 @@ Prior to invoking the API, you will need to have this backend up.
 We have provided the file containing this sample backend [here](/resources/backend.yaml). Download it and create the backend service using the following command.
 
 ```
-kubectl apply -f ./employee-service-backend.yaml -n backend
+kubectl apply -f backend.yaml -n backend
 ```
 
 Wait for this pod to spin up. You can check its status using the following command.
@@ -56,41 +56,41 @@ Apart from the above API definition file, we also need an `apk-conf` file that d
 
 2. Execute the following request to generate the apk configuration.
 
-    === "Request"
-        ```
-        curl -k --location 'https://api.am.wso2.com:9095/api/configurator/1.1.0/apis/generate-configuration' --header 'Host: api.am.wso2.com' --form 'definition=@"./HotelReservationService.json"'
-        ```
+=== "Sample Request"
+    ```
+    curl -k --location 'https://api.am.wso2.com:9095/api/configurator/1.1.0/apis/generate-configuration' --header 'Host: api.am.wso2.com' --form 'definition=@"./HotelReservationService.json"'
+    ```
+=== "Sample Response"
+    ```
+    ---
+    name: "Hotel Reservation API"
+    basePath: "/SG90ZWwgUmVzZXJ2YXRpb24gQVBJMS4wLjA"
+    version: "1.0.0"
+    type: "REST"
+    defaultVersion: false
+    subscriptionValidation: false
+    endpointConfigurations:
+        production:
+            endpoint: "http://hotel-service.backend:82"
+    operations:
+    - target: "/reservation"
+        verb: "GET"
+        secured: true
+        scopes: []
+    - target: "/reservation"
+        verb: "POST"
+        secured: true
+        scopes: []
+    - target: "/reservation/{id}"
+        verb: "PUT"
+        secured: true
+        scopes: []
+    - target: "/reservation/{id}"
+        verb: "DELETE"
+        secured: true
+        scopes: []
+    ```
 
-    === "Response"
-        ```
-        ---
-        name: "Hotel Reservation API"
-        basePath: "/SG90ZWwgUmVzZXJ2YXRpb24gQVBJMS4wLjA"
-        version: "1.0.0"
-        type: "REST"
-        defaultVersion: false
-        subscriptionValidation: false
-        endpointConfigurations:
-            production:
-                endpoint: "http://hotel-service.backend:82"
-        operations:
-        - target: "/reservation"
-            verb: "GET"
-            secured: true
-            scopes: []
-        - target: "/reservation"
-            verb: "POST"
-            secured: true
-            scopes: []
-        - target: "/reservation/{id}"
-            verb: "PUT"
-            secured: true
-            scopes: []
-        - target: "/reservation/{id}"
-            verb: "DELETE"
-            secured: true
-            scopes: []
-        ```
 
 2. You will get the apk-conf file content as the response. Save this content into a file named `HotelReservation.apk-conf`.
 
