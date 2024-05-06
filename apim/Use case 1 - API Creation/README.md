@@ -30,8 +30,8 @@ Image: <link_to_image>
 Description: Station information API
 Tags: train, information, gogo
 Make this the default version: Yes
-GitHub URL: [GitHub Repo](https://github.com/gogo/station-information)
-Slack URL: [Slack Channel](https://app.slack.com/huddle/T06U35HMPPA/C06TEBVVALS)
+GitHub URL: https://github.com/gogo/station-information
+Slack URL: https://app.slack.com/huddle/T06U35HMPPA/C06TEBVVALS
 ```
 3. Click **Save** to update the basic information.
 

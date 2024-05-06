@@ -27,12 +27,12 @@ In today's digital world, managing APIs is crucial for organizations aiming to s
 - JDK 17 or higher
 - [WSO2 API Manager v4.3.0](https://wso2.com/api-manager/)
 - [WSO2 Micro Integrator v4.2.0](https://wso2.com/micro-integrator/)
-- [Apache Tomcat 9.x](https://tomcat.apache.org/download-10.cgi)
+- [Apache Tomcat 9.x](https://tomcat.apache.org)
 - cURL
 - wscat
 - [Node.js](https://nodejs.org/)
 - Apache Maven
 - [OPA](https://www.openpolicyagent.org/docs/v0.11.0/get-started/)
 - Setup Backends:
-Follow the [guides](./resources/backend) provided in the repository to set up the backends. Ensure you carefully follow each step mentioned in the guides to configure and deploy the backend components correctly.
+Follow the [guides](./resources/backends) provided in the repository to set up the backends. Ensure you carefully follow each step mentioned in the guides to configure and deploy the backend components correctly.
 

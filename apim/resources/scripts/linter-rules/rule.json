@@ -1,0 +1,30 @@
+"LinterCustomRules": {
+       "rules": {
+           "email-rule": {
+               "description": "Contact email address should belong to GOGO domain.",
+               "given": "$",
+               "severity": "error",
+               "then": {
+                   "field": "info.contact.email",
+                   "function": "pattern",
+                   "functionOptions": {
+                       "match": "^[a-z]+@gogo.com$"
+                   }
+               }
+           },
+           "license-rule": {
+               "description": "Apache 2.0 License header should be provided",
+               "given": "$.info.license",
+               "severity": "error",
+               "then": [
+                   {
+                       "field": "name",
+                       "function": "pattern",
+                       "functionOptions": {
+                           "match": "Apache 2.0"
+                       }
+                   }
+               ]
+           }
+       }
+   }
