@@ -1,5 +1,9 @@
 # Governance
 
+## Prerequisites
+
+Follow the steps outlined in [guide](https://apim.docs.wso2.com/en/latest/consume/manage-application/sharing-applications/sharing-applications/) to enable application sharing.
+
 1. **Access the Admin Portal**
 
     Visit [Admin Portal](https://localhost:9443/admin) and log in using the following credentials:

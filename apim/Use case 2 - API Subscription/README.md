@@ -4,6 +4,8 @@
 
 Make sure to have completed the steps outlined in [Use case 1 - API Creation](../Use%20case%201%20-%20API%20Creation/README.md).
 
+Follow the steps outlined in [guide](https://apim.docs.wso2.com/en/latest/consume/discover-apis/marketplace-assistant/) to enable AI feature with API Manager.
+
 1. **Access the API Publisher**
 
     Navigate to [API Publisher](https://localhost:9443/publisher) and log in with your credentials:
