@@ -47,13 +47,18 @@ Make sure to have completed the steps outlined in [Use case 1 - API Creation](..
 ## Step 5: Access the Developer Portal
 
    1. Navigate to the Developer portal to test scope restrictions.
-   2. Log in as an employee or Station Manager using the following credentials (fill in the blanks accordingly):
+   2. Log in as an employee or Station Manager(stationmanager) using the following credentials 
 
     ```
     Username: devuser
     Password: user123
     ```
 
-   3. Subscribe and attempt to invoke the APIs. Note that as an employee, you will be restricted from invoking the POST and PUT resources where the scope is applied. However, as a Station Manager, you should be able to freely invoke these operations, as the role **station-manager** is associated with the necessary scopes.
+    ```
+    Username: stationmanager
+    Password: user123
+    ```
+
+   3. Subscribe and attempt to invoke the APIs. Note that as the devuser, you will be restricted from invoking the POST and PUT resources where the scope is applied. However, as stationmanager, you should be able to freely invoke these operations, as the role **station-manager** is associated with the necessary scopes.
 
 This guide outlines the process of creating, assigning, and testing API scopes within the API Publisher to control access based on user roles.

@@ -258,7 +258,8 @@ addUserWithRole "admin" "admin" "peter" "Internal/subscriber" "Internal/everyone
 addUserWithRole "admin" "admin" "apiprovider" "Internal/creator" "Internal/publisher"
 addUserWithRole "admin" "admin" "devuser" "Internal/subscriber" "Internal/everyone"
 addUserWithRole "admin" "admin" "Paul" "Internal/publisher" "Internal/everyone"
-addUserWith3Role "admin" "admin" "tom" "Internal/subscriber" "Internal/everyone" "hr_department"
+addUserWith3Role "admin" "admin" "tom" "Internal/subscriber" "Internal/everyone" "hr_admin"
 addUserWith3Role "admin" "admin" "larry" "Internal/subscriber" "Internal/everyone" "marketing_department"
 addUserWith3Roles "admin" "admin" "employee" "Internal/subscriber" "hr_admin" "hr_department"
+addUserWith3Roles "admin" "admin" "stationmanager" "Internal/subscriber" "Internal/everyone" "station-manager"
 sleep 3

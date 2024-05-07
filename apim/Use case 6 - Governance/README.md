@@ -69,8 +69,8 @@ Follow the steps outlined in [guide](https://apim.docs.wso2.com/en/latest/consum
    - Visit [Admin Portal](https://localhost:9443/admin).
    - Log in using:
    ```
-   Username: tom
-   Password: user123
+   Username: admin
+   Password: admin
    ```
    - Navigate to **Tasks** → **API State Change**.
    - Approve the publish of the API.
