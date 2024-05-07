@@ -36,8 +36,8 @@
    - Go to [Publisher Portal](https://localhost:9443/publisher).
    - Log in with the provided credentials:
    ```
-   Username: <username>
-   Password: <password>
+   Username: apiprovider
+   Password: user123
    ```
 
 6. **Create an API with OpenAPI Definition**
@@ -65,8 +65,8 @@
    - Visit [Admin Portal](https://localhost:9443/admin).
    - Log in using:
    ```
-   Username: <username>
-   Password: <password>
+   Username: tom
+   Password: user123
    ```
    - Navigate to **Tasks** → **API State Change**.
    - Approve the publish of the API.
@@ -76,12 +76,12 @@
     - Log in with:
     ```
     Username: suzy
-    Password: <password>
+    Password: user123
     ```
     - Attempt to subscribe and invoke the API, noting the restriction.
     - Then log in with a user having the `hr_admin` role:
     ```
     Username: tom
-    Password: <password>
+    Password: user123
     ```
     - Subscribe and invoke the API successfully.

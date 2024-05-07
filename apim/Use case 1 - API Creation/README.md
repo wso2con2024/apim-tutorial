@@ -32,7 +32,7 @@ Ensure that the Train Operation application is deployed on the Tomcat server. Yo
     2. Select **Basic Info** and update the following information:
 
     ```
-    Image: <link_to_image>
+    Image: <../resources/APIs/stationInformation/icon.png>
     Description: Station information API
     Tags: train, information, gogo
     Make this the default version: Yes
@@ -61,7 +61,6 @@ Ensure that the Train Operation application is deployed on the Tomcat server. Yo
     ```
     Name: Station Information API Documentation
     Summary: This documentation provides a detailed guide for developers on how to interact with the Station API.
-    Type: <specify_document_type>
     Source: Markdown
     ```
 
@@ -101,7 +100,7 @@ Ensure that the Train Operation application is deployed on the Tomcat server. Yo
 8. **API Definition and Deployment**
 
     1. Select **API Definition** and Click **Edit**.
-    2. Replace the API Definition with <resources station_information_api.yaml>.
+    2. Replace the API Definition with [station_information_api.yaml](../resources/APIs/stationInformation/station_information_api.yaml).
     3. Click **Update Content** then click **Save**.
     4. To deploy the API, under **Deploy**, select **Deployments**.
     5. Select **Default** gateway and click **Deploy**.

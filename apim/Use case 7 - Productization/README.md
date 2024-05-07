@@ -19,8 +19,8 @@
 3. **Login to Publisher Portal**
    Navigate to [Publisher Portal](https://localhost:9443/publisher).
    ```
-   Username: paul
-   Password: [password here]
+   Username: apiprovider
+   Password: user123
    ```
 
 4. **Create a New Product**
@@ -28,17 +28,12 @@
    2. Click **API Product**.
    3. Create a new API Product with the following parameters:
    ```
-   Name: [API Product Name]
-   Context: [API Product Context]
+   Name: TravelPlanner
+   Context: travel-planner
    Version: 1.0.0
    ```
    4. Click **Next**.
-   5. Select the following APIs. Then click **Add Selected**.
-   ```
-   API 1
-   API 2
-   API 3
-   ```
+   5. Select the required. Then click **Add Selected**.
    6. Click **Create**. This will create the API Product.
 
 6. **Set Visibility**
@@ -54,13 +49,12 @@
 
 9. **Signup as a Different User within `travelEase` organization**
     1. Select **Create Account**.
-    2. Provide `[user-name]` as the **Username**. Then click **Proceed to Self Register**.
+    2. Provide `paul` as the **Username**. Then click **Proceed to Self Register**.
     3. Create a new account in the `travelEase` organization.
    ```
-   First Name: [update]
-   Last Name: [update]
-   Password: [update]
-   Email: [update]
+   First Name: Paul
+   Password: user123
+   Email: paul@gogo.com
    Organization: travelEase
    ```
     4. Agree to the privacy policy and click **Register**.
@@ -69,9 +63,9 @@
 10. **Create an application within `travelEase` organization**
     1. Create an application with the following information:
    ```
-   Application Name: [name]
-   Shared Quota for Application Tokens: [quota]
-   Application Description: [description]
+   Application Name: EnterprisePlus
+   Shared Quota for Application Tokens: 10000
+   Application Description: Paid subscription policy
    Application Groups: travelEase
    ```
 
@@ -79,7 +73,7 @@
     - Now log in using the following user, which is in the same organization.
    ```
    Username: suzy
-   Password: [password]
+   Password: user123
    ```
 
 12. **Application Visibility within the Organization**
@@ -87,7 +81,7 @@
 
 13. **Access the API Product**
     - Navigate to the **APIs** section.
-    - Select the `<API Product Name>`. Since user `Suzy` has the `travelEase` role, she will have access to the API Product.
+    - Select the `EnterprisePlus`. Since user `Suzy` has the `travelEase` role, she will have access to the API Product.
 
 14. **Subscribe to the API Product**
     - Use the previously created application to subscribe to the API Product.

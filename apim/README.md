@@ -37,4 +37,5 @@ In today's digital world, managing APIs is crucial for organizations aiming to s
 - [OPA](https://www.openpolicyagent.org/docs/v0.11.0/get-started/)
 - Setup Backends:
 Follow the [guides](./resources/backends) provided in the repository to set up the backends. Ensure you carefully follow each step mentioned in the guides to configure and deploy the backend components correctly.
+- Execute [setup.sh](./resources/scripts/setup.sh) to setup the required tenants, users and APIs for the demonstration.
 

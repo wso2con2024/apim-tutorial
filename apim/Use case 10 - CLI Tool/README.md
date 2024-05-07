@@ -27,13 +27,36 @@ Before proceeding, ensure the following prerequisites are met:
 
 
 3. **Export the API to production envioronment**
-   - Run the following commands to import the `StationInformation` API as a .zip archive. Provide the login credentials when prompted.
+   - Run the following commands to import the `StationInformation` API to the production environment. Provide the login credentials when prompted.
 
    ```
    ./apictl login prod -k
-   ./apictl import-api -f <path-to-zip-archive> -e prod -k
+   ./apictl import-api -f <path-to-api-zip-archive> -e prod -k
    ```
+
 4. **View the migrated API**
    - Navigate to → [API Publisher](https://<prod-server-ip>:<port>/publisher).
    - Note the `StationInformation` is available in the production environment.
+   
+
+5. **Export the Application from developer envioronment**
+   - Run the following commands to export the `DevUserApp` application as a .zip archive. Provide the login credentials when prompted.
+
+   ```
+   ./apictl login dev -k
+   ./apictl export app -n DevUserApp -o devuser -e dev
+   ```
+
+
+3. **Export the API to production envioronment**
+   - Run the following commands to import the `DevUserApp` applicaiton to the production environment. Provide the login credentials when prompted.
+
+   ```
+   ./apictl login prod -k
+   ./apictl import app -f <path-to-application-zip-archive> -e prod
+   ```
+
+4. **View the migrated application**
+   - Navigate to → [API Publisher](https://<prod-server-ip>:<port>/publisher).
+   - Note the `DevUserApp` is available in the production environment.
    

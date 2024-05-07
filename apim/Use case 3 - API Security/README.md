@@ -9,7 +9,7 @@ Make sure to have completed the steps outlined in [Use case 1 - API Creation](..
    Navigate to [API Publisher](https://localhost:9443/publisher) and log in with your credentials:
 
    ```
-   Username: devuser
+   Username: apiprovider
    Password: user123
    ```
 
@@ -49,10 +49,10 @@ Make sure to have completed the steps outlined in [Use case 1 - API Creation](..
    1. Navigate to the Developer portal to test scope restrictions.
    2. Log in as an employee or Station Manager using the following credentials (fill in the blanks accordingly):
 
-   ```
-   Username: [your_username]
-   Password: [your_password]
-   ```
+    ```
+    Username: devuser
+    Password: user123
+    ```
 
    3. Subscribe and attempt to invoke the APIs. Note that as an employee, you will be restricted from invoking the POST and PUT resources where the scope is applied. However, as a Station Manager, you should be able to freely invoke these operations, as the role **station-manager** is associated with the necessary scopes.
 

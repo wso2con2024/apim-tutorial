@@ -20,10 +20,10 @@ Ensure that the GraphQL backend server is operational. You can refer to the inst
 4. **API Details**
    - Enter the required details:
      ```
-     Name: `[API_name]`
-     Context: `[API_context]`
-     Version: `[API_version]`
-     Endpoint: `[API_endpoint]`
+     Name: `TrainSchedule`
+     Context: `/train-schedule`
+     Version: `1.0.0`
+     Endpoint: `http://<graphql-server-ip>:<port>`
      ```
    - Click `Create`.
 

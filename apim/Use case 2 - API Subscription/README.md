@@ -33,9 +33,9 @@ Make sure to have completed the steps outlined in [Use case 1 - API Creation](..
     2. Fill in the fields and click **Save**:
 
     ```
-    Application Name: [name]
-    Shared Quota for Application Tokens: [quota]
-    Application Description: [description]
+    Application Name: DevUserApp
+    Shared Quota for Application Tokens: 10PerMin
+    Application Description: Dev user application. Allows 10 requests per minute.
     ```
 
 5. **Subscribe to the API**

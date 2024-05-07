@@ -9,7 +9,7 @@ Make sure to have completed the steps outlined in [Use case 1 - API Creation](..
    Navigate to [API Publisher](https://localhost:9443/publisher) and log in with your credentials:
 
    ```
-   Username: devuser
+   Username: apiprovider
    Password: user123
    ```
 
